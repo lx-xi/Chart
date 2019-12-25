@@ -14,7 +14,7 @@
 		8B7742871CF2AE51001DA883 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7742851CF2AE51001DA883 /* LaunchScreen.storyboard */; };
 		8B77428F1CF2AE9B001DA883 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B77428E1CF2AE9B001DA883 /* data.json */; };
 		8B7742911CF2AF85001DA883 /* DataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7742901CF2AF85001DA883 /* DataTableView.swift */; };
-		8BA10E041CF2F8390018B92B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA10DFF1CF2F8390018B92B /* SwiftyJSON.swift */; };
+		8ECEFEA523B365E5004F48B3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECEFEA423B365E5004F48B3 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +27,7 @@
 		8B7742881CF2AE51001DA883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B77428E1CF2AE9B001DA883 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		8B7742901CF2AF85001DA883 /* DataTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableView.swift; sourceTree = "<group>"; };
-		8BA10DFE1CF2F8390018B92B /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
-		8BA10DFF1CF2F8390018B92B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		8ECEFEA423B365E5004F48B3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +76,7 @@
 		8BA10DF91CF2F8390018B92B /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				8BA10DFE1CF2F8390018B92B /* SwiftyJSON.h */,
-				8BA10DFF1CF2F8390018B92B /* SwiftyJSON.swift */,
+				8ECEFEA423B365E5004F48B3 /* SwiftyJSON.swift */,
 			);
 			path = SwiftyJSON;
 			sourceTree = "<group>";
@@ -123,6 +121,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -158,7 +157,7 @@
 				8B77427F1CF2AE51001DA883 /* ViewController.swift in Sources */,
 				8B7742911CF2AF85001DA883 /* DataTableView.swift in Sources */,
 				8B77427D1CF2AE51001DA883 /* AppDelegate.swift in Sources */,
-				8BA10E041CF2F8390018B92B /* SwiftyJSON.swift in Sources */,
+				8ECEFEA523B365E5004F48B3 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +276,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tvm.ChartTable-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -288,6 +288,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tvm.ChartTable-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

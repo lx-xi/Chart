@@ -4,11 +4,14 @@
 //
 //  Created by xun.liu on 15/5/25.
 //  Copyright (c) 2015年 xun.liu. All rights reserved.
-//  lx_xi163@163.com
+//  
 
 #import "ViewController.h"
 #import "DataTableView.h"
 #import "JSONKit.h"
+
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
 
 @interface ViewController ()<scrollDelegate, UIScrollViewDelegate>
 
@@ -24,7 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    CGFloat chartW = 500;
+    CGFloat chartH = 300;
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
     NSString *str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -39,7 +44,7 @@
     
     
     //第一列tableView父视图
-    _headView = [[UIView alloc] initWithFrame:CGRectMake(30, 50, 200, 300)];
+    _headView = [[UIView alloc] initWithFrame:CGRectMake(30, 50, 200, chartH)];
     _headView.backgroundColor = [UIColor grayColor];
     _headView.userInteractionEnabled = YES;
     //设置边框，形成表格
@@ -48,7 +53,7 @@
     [self.view addSubview:_headView];
     
     //可左右滑动tableView父视图
-    _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(230, 50, 500, 300)];
+    _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(230, 50, chartW, chartH)];
     _scroll.contentSize = CGSizeMake((_arrX.count-1)*130, _arrY.count*50);
     _scroll.showsHorizontalScrollIndicator = NO;
     _scroll.showsVerticalScrollIndicator = NO;
@@ -67,8 +72,7 @@
     
     NSMutableArray *titleArr1 = [NSMutableArray array];
     NSMutableArray *levels = [NSMutableArray array];
-    for (NSDictionary *dic in _arrY)
-    {
+    for (NSDictionary *dic in _arrY) {
         NSString *titleStr = [dic objectForKey:@"date1"];
         [titleArr1 addObject:titleStr];
         
@@ -83,9 +87,8 @@
     [_headView addSubview:tableView];
     
     
-    for (int i=0; i<_arrX.count-1; i++)
-    {
-        DataTableView *tableView = [[DataTableView alloc] initWithFrame:CGRectMake(130*i, 0, 130, 300) style:UITableViewStylePlain];
+    for (int i=0; i<_arrX.count-1; i++) {
+        DataTableView *tableView = [[DataTableView alloc] initWithFrame:CGRectMake(130*i, 0, 130, chartH) style:UITableViewStylePlain];
         
         //x方向 取出key对应的字符串名字
         NSString *xkey = [NSString stringWithFormat:@"name%i",i+2];
@@ -94,8 +97,7 @@
         
         //y方向
         NSMutableArray *titleArr2 = [NSMutableArray array];
-        for (int j=0; j<_arrY.count; j++)
-        {
+        for (int j=0; j<_arrY.count; j++) {
             NSString *ykey = [NSString stringWithFormat:@"date%i",i+2];
             NSString *yname = [_arrY[j] objectForKey:ykey];
             [titleArr2 addObject:yname];
@@ -108,24 +110,21 @@
 }
 
 #pragma mark - scrollDelegate
--(void)dataTableViewContentOffSet:(CGPoint)contentOffSet
+- (void)dataTableViewContentOffSet:(CGPoint)contentOffSet
 {
-    for (UIView *subView in _scroll.subviews)
-    {
-        if ([subView isKindOfClass:[DataTableView class]])
-        {
+    for (UIView *subView in _scroll.subviews) {
+        if ([subView isKindOfClass:[DataTableView class]]) {
             [(DataTableView *)subView setTableViewContentOffSet:contentOffSet];
         }
     }
     
-    for (UIView *subView in _headView.subviews)
-    {
+    for (UIView *subView in _headView.subviews) {
         [(DataTableView *)subView setTableViewContentOffSet:contentOffSet];
     }
 }
 
 #pragma mark - UIScrollViewDelegate
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGPoint p = scrollView.contentOffset;
     NSLog(@"%@",NSStringFromCGPoint(p));
